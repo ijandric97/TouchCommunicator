@@ -1,11 +1,11 @@
 QT += quick
 
+CONFIG += c++11
+
 SOURCES += \
         main.cpp
 
-resources.files = main.qml 
-resources.prefix = /$${TARGET}
-RESOURCES += resources
+RESOURCES += qml.qrc
 
 TRANSLATIONS += \
     QTComm_hr_HR.ts
@@ -22,5 +22,3 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-HEADERS +=

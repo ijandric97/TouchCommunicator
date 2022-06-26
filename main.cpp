@@ -6,6 +6,7 @@
 
 int main(int argc, char *argv[])
 {
+    qputenv("QML_XHR_ALLOW_FILE_READ", QByteArray("1"));
     QGuiApplication app(argc, argv);
 
     // Load translations
@@ -21,7 +22,7 @@ int main(int argc, char *argv[])
 
     // Load the main.qml file
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/QTComm/main.qml"_qs);
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
