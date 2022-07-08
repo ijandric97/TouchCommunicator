@@ -2,8 +2,6 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Material
 
-import "../scripts/ViewManager.js" as ViewManager;
-
 Item {
     GridLayout {
         anchors.fill: parent
@@ -17,7 +15,7 @@ Item {
             Layout.rightMargin: 16
             text: "Settings"
 
-            onClicked: ViewManager.switchToSettings()
+            onClicked: appSettings.switchToSettings()
         }
 
         Button {
@@ -27,7 +25,7 @@ Item {
             Layout.leftMargin: 16
             text: "Communicator"
             Material.background: Material.Red
-            onClicked: ViewManager.switchToCommunicator();
+            onClicked: appSettings.switchToCommunicator();
         }
     }
 }

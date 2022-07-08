@@ -1,10 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <!-- Views -->
         <file>views/selector.qml</file>
         <file>views/communicator.qml</file>
         <file>views/settings.qml</file>
+        <!-- Scripts -->
+        <file>scripts/ApplicationSettings.qml</file>
         <file>scripts/Database.js</file>
-        <file>scripts/ViewManager.js</file>
     </qresource>
 </RCC>

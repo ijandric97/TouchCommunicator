@@ -6,6 +6,7 @@
 
 int main(int argc, char *argv[])
 {
+    // Prepare the application
     qputenv("QML_XHR_ALLOW_FILE_READ", QByteArray("1"));
     QGuiApplication app(argc, argv);
 

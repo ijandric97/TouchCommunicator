@@ -2,7 +2,8 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
 
-import "scripts/ViewManager.js" as ViewManager
+import "scripts";
+
 
 Window {
     width: 800
@@ -10,14 +11,13 @@ Window {
     visible: true
     title: qsTr("Touch Communicator")
 
-    onBeforeRendering: console.log("HMM");
+    ApplicationSettings {
+        id: appSettings
+    }
 
     Loader {
         id: viewLoader
-
         anchors.fill: parent
-        source: ViewManager.DEFAULT_FILE
-
-        onLoaded: { console.log("LOADED"); ViewManager.setLoader(viewLoader) }
+        source: appSettings.viewFile;
     }
 }
