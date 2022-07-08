@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Window
-import QtQuick.Controls
+import QtQuick.Controls.Material
 
 import "scripts";
 
@@ -11,13 +11,20 @@ Window {
     visible: true
     title: qsTr("Touch Communicator")
 
-    ApplicationSettings {
+    Material.theme: appSettings.isDarkMode ? Material.Dark : Material.Light;
+    color: appSettings.isDarkMode ? "black" : "white";
+
+    AppSettings {
         id: appSettings
+    }
+
+    ViewManager {
+        id: viewManager
     }
 
     Loader {
         id: viewLoader
         anchors.fill: parent
-        source: appSettings.viewFile;
+        source: viewManager.viewFile
     }
 }

@@ -3,29 +3,32 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 
 Item {
-    GridLayout {
+    RowLayout {
         anchors.fill: parent
-        columns: 2
-        rows: 1
+        anchors.margins: 32
+        spacing: 32
 
-        Button {
+        Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.margins: 32
-            Layout.rightMargin: 16
-            text: "Settings"
 
-            onClicked: appSettings.switchToSettings()
+            Button {
+                anchors.fill: parent
+                text: "Settings"
+                onClicked: viewManager.switchToSettings()
+            }
         }
 
-        Button {
+        Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.margins: 32
-            Layout.leftMargin: 16
-            text: "Communicator"
-            Material.background: Material.Red
-            onClicked: appSettings.switchToCommunicator();
+
+            Button {
+                anchors.fill: parent
+                text: "Communicator"
+                Material.background: Material.Red
+                onClicked: viewManager.switchToCommunicator()
+            }
         }
     }
 }

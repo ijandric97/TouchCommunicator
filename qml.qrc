@@ -6,7 +6,8 @@
         <file>views/communicator.qml</file>
         <file>views/settings.qml</file>
         <!-- Scripts -->
-        <file>scripts/ApplicationSettings.qml</file>
+        <file>scripts/ViewManager.qml</file>
         <file>scripts/Database.js</file>
+        <file>scripts/AppSettings.qml</file>
     </qresource>
 </RCC>
