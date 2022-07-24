@@ -9,7 +9,7 @@ Window {
     width: 800
     height: 600
     visible: true
-    title: qsTr("Touch Communicator")
+    title: qsTr("TOUCH_COMMUNICATOR");
 
     Material.theme: appSettings.isDarkMode ? Material.Dark : Material.Light;
     color: appSettings.isDarkMode ? "black" : "white";

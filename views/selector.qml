@@ -14,7 +14,7 @@ Item {
 
             Button {
                 anchors.fill: parent
-                text: "Settings"
+                text: qsTr("SETTINGS");
                 onClicked: viewManager.switchToSettings()
             }
         }
@@ -25,7 +25,7 @@ Item {
 
             Button {
                 anchors.fill: parent
-                text: "Communicator"
+                text: qsTr("COMMUNICATOR");
                 Material.background: Material.Red
                 onClicked: viewManager.switchToCommunicator()
             }

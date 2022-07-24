@@ -3,12 +3,18 @@ QT += quick
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        qmltranslator.cpp
+
+HEADERS += \
+    qmltranslator.h
 
 RESOURCES += qml.qrc
 
 TRANSLATIONS += \
-    QTComm_hr_HR.ts
+    translations\QTComm_hr_HR.ts \
+    translations\QTComm_en_US.ts
+
 CONFIG += lrelease
 CONFIG += embed_translations
 

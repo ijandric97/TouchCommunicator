@@ -1,28 +1,22 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 
-#include <QLocale>
-#include <QTranslator>
+#include "qmltranslator.h"
+
 
 int main(int argc, char *argv[])
 {
     // Prepare the application
-    qputenv("QML_XHR_ALLOW_FILE_READ", QByteArray("1"));
+    //qputenv("QML_XHR_ALLOW_FILE_READ", QByteArray("1"));
     QGuiApplication app(argc, argv);
+    QQmlApplicationEngine engine;
+    QmlTranslator qmlTranslator(&engine);
 
-    // Load translations
-    QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "QTComm_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            app.installTranslator(&translator);
-            break;
-        }
-    }
+    // Register and expose C++ methods to QML
+    engine.rootContext()->setContextProperty("qmlTranslator", &qmlTranslator);
 
     // Load the main.qml file
-    QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
@@ -30,6 +24,7 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+
 
     return app.exec();
 }
