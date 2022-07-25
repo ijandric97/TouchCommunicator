@@ -4,6 +4,8 @@ Touch communicator written in Qt Quick (v6+).
 
 ## JSON File structure
 
+FIXME: Use SQL instead of JSON
+
 ```json
 {
   "settings": {

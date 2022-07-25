@@ -13,9 +13,6 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     QmlTranslator qmlTranslator(&engine);
 
-    // Register and expose C++ methods to QML
-    engine.rootContext()->setContextProperty("qmlTranslator", &qmlTranslator);
-
     // Load the main.qml file
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -25,6 +22,8 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
+    // Register and expose C++ methods to QML
+    engine.rootContext()->setContextProperty("qmlTranslator", &qmlTranslator);
 
     return app.exec();
 }

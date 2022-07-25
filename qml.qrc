@@ -2,12 +2,19 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <!-- Views -->
-        <file>views/selector.qml</file>
-        <file>views/communicator.qml</file>
-        <file>views/settings.qml</file>
+        <file>views/Selector.qml</file>
+        <file>views/Communicator.qml</file>
+        <file>views/Settings.qml</file>
+        <file>views/SettingsGeneralTab.qml</file>
+        <file>views/SettingsActivitiesTab.qml</file>
         <!-- Scripts -->
         <file>scripts/ViewManager.qml</file>
         <file>scripts/Database.js</file>
         <file>scripts/AppSettings.qml</file>
+        <!-- Images -->
+        <file>images/btn_back.png</file>
+        <file>images/btn_save.png</file>
+        <file>images/flag_uk.png</file>
+        <file>images/flag_cro.png</file>
     </qresource>
 </RCC>
