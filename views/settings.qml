@@ -18,15 +18,20 @@ Item {
         }
         icon {
             source: "qrc:///images/btn_back.png";
-            color: True
+            color: "transparent"
         }
-        onClicked: viewManager.switchToSelector();
+        onClicked: {
+            appSettings.loadSettings(); // Just in case something is not saved, revert it
+            // TODO: Perhaps revert also activities
+            viewManager.switchToSelector();
+        }
     }
 
     Text {
         id: settingsTitle
         height: 1
         text: qsTr("SETTINGS");
+        color: appSettings.isDarkMode ? "white": "black";
         anchors {
             left: backButton.right
             top: parent.top
@@ -48,9 +53,12 @@ Item {
         }
         icon {
             source: "qrc:///images/btn_save.png";
-            color: True
+            color: "transparent"
         }
-        onClicked: console.log("SAVE SETTINGS"); // FIXME: Implement this :)
+        onClicked: {
+            appSettings.saveSettings();
+            // TODO: Perhaps saving activities?
+        }
     }
 
     Rectangle {
@@ -63,7 +71,7 @@ Item {
             topMargin: 8
         }
         border {
-            color: appSettings.isDarkMode ? "#585858" : "#9C9C9C";
+            color: appSettings.isDarkMode ? "#585858": "#9C9C9C";
             width: 1
         }
         radius: 5
@@ -104,8 +112,8 @@ Item {
 
                 currentIndex: settingsTabBar.currentIndex
 
-                SettingsGeneralTab {}
-                SettingsActivitiesTab {}
+                SettingsGeneralTab { }
+                SettingsActivitiesTab { }
             }
         }
     }

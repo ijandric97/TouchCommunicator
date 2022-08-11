@@ -64,5 +64,21 @@
             <source>DARK_MODE</source>
             <translation>Tamni način</translation>
         </message>
+        <message>
+            <source>ROW_COUNT</source>
+            <translation>Broj redaka</translation>
+        </message>
+        <message>
+            <source>COLUMN_COUNT</source>
+            <translation>Broj stupaca</translation>
+        </message>
+        <message>
+            <source>ACCESIBILITY</source>
+            <translation>Pristupačnost</translation>
+        </message>
+        <message>
+            <source>WAIT_TIME</source>
+            <translation>Vrijeme čekanja (ms)</translation>
+        </message>
     </context>
 </TS>

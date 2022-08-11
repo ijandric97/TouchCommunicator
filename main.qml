@@ -7,7 +7,7 @@ import "scripts";
 
 Window {
     width: 800
-    height: 600
+    height: 800
     visible: true
     title: qsTr("TOUCH_COMMUNICATOR");
 
@@ -22,9 +22,14 @@ Window {
         id: viewManager
     }
 
+    Storage {
+        id: storage
+    }
+
     Loader {
         id: viewLoader
         anchors.fill: parent
         source: viewManager.viewFile
+        onActiveChanged: console.log(appSettings.waitTime);
     }
 }

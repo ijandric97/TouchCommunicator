@@ -4,7 +4,6 @@ QmlTranslator::QmlTranslator(QQmlEngine *engine, QObject *parent) : QObject{pare
 {
     _translator = new QTranslator(this);
     _engine = engine;
-    selectLanguage("hr_HR"); // FIXME: Load the correct locale from settings
 }
 
 void QmlTranslator::selectLanguage(QString language)

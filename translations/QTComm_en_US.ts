@@ -64,5 +64,21 @@
             <source>DARK_MODE</source>
             <translation>Dark mode</translation>
         </message>
+        <message>
+            <source>ROW_COUNT</source>
+            <translation>Row count</translation>
+        </message>
+        <message>
+            <source>COLUMN_COUNT</source>
+            <translation>Column count</translation>
+        </message>
+        <message>
+            <source>ACCESIBILITY</source>
+            <translation>Accesibility</translation>
+        </message>
+        <message>
+            <source>WAIT_TIME</source>
+            <translation>Wait time (ms)</translation>
+        </message>
     </context>
 </TS>

@@ -9,8 +9,9 @@
         <file>views/SettingsActivitiesTab.qml</file>
         <!-- Scripts -->
         <file>scripts/ViewManager.qml</file>
-        <file>scripts/Database.js</file>
+        <file>scripts/Storage.qml</file>
         <file>scripts/AppSettings.qml</file>
+        <file>scripts/utils.js</file>
         <!-- Images -->
         <file>images/btn_back.png</file>
         <file>images/btn_save.png</file>

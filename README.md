@@ -12,7 +12,7 @@ FIXME: Use SQL instead of JSON
     "darkTheme": true,
     "rows": 4,
     "columns": 4,
-    "waitTime": 2, // in seconds
+    "waitTime": 2000, // in miliseconds
     "language": "en_US",
   },
   "entries": [
