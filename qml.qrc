@@ -2,15 +2,17 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <!-- Views -->
-        <file>views/Selector.qml</file>
+        <file>views/ActivityButton.qml</file>
         <file>views/Communicator.qml</file>
+        <file>views/Selector.qml</file>
         <file>views/Settings.qml</file>
-        <file>views/SettingsGeneralTab.qml</file>
         <file>views/SettingsActivitiesTab.qml</file>
+        <file>views/SettingsGeneralTab.qml</file>
         <!-- Scripts -->
-        <file>scripts/ViewManager.qml</file>
-        <file>scripts/Storage.qml</file>
+        <file>scripts/AppActivities.qml</file>
         <file>scripts/AppSettings.qml</file>
+        <file>scripts/Storage.qml</file>
+        <file>scripts/ViewManager.qml</file>
         <file>scripts/utils.js</file>
         <!-- Images -->
         <file>images/btn_back.png</file>

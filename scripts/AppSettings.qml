@@ -4,7 +4,7 @@ import "utils.js" as Utils
 
 QtObject {
     // Constants
-    readonly property var sizes: [2, 3, 4, 5];
+    readonly property var sizes: [3, 4, 5];
     readonly property int minWaitTime: 0;
     readonly property int maxWaitTime: 10000;
     readonly property var languages: ["hr_HR", "en_US"];
@@ -21,11 +21,21 @@ QtObject {
         return (isDarkMode = !isDarkMode);
     }
 
+    function getPerPageCount() {
+        return getRowCount() * getColumnCount();
+    }
+
     function getRowCount() {
-        return sizes[rows];
+        if (rowSizeIndex < 0 || rowSizeIndex >= sizes.length) {
+            rowSizeIndex = 0; // Safety check, if index is incorrect set it to 0
+        }
+        return sizes[rowSizeIndex];
     }
 
     function getColumnCount() {
+        if (columnSizeIndex < 0 || columnSizeIndex >= sizes.length) {
+            columnSizeIndex = 0; // Safety check, if index is incorrect set it to 0
+        }
         return sizes[columnSizeIndex];
     }
 
@@ -77,6 +87,5 @@ QtObject {
 
     Component.onCompleted: {
         loadSettings();
-        console.log("Settings initialized");
     }
 }

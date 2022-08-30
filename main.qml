@@ -2,7 +2,8 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls.Material
 
-import "scripts";
+import "scripts"
+import "views"
 
 
 Window {
@@ -22,6 +23,10 @@ Window {
         id: viewManager
     }
 
+    AppActivities {
+        id: appActivities
+    }
+
     Storage {
         id: storage
     }
@@ -30,6 +35,5 @@ Window {
         id: viewLoader
         anchors.fill: parent
         source: viewManager.viewFile
-        onActiveChanged: console.log(appSettings.waitTime);
     }
 }
