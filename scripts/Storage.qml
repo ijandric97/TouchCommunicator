@@ -80,6 +80,8 @@ QtObject {
                     "parent"	INTEGER,
                     "title"	TEXT NOT NULL,
                     "color"	INTEGER,
+                    "icon"  BLOB,
+                    "sound" BLOB,
                     PRIMARY KEY("id")
                 );
             `);

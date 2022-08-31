@@ -15,11 +15,11 @@ Item {
 
         Repeater {
             id: activityRepeater
-            model: appActivities.items
+            model: appSettings.getPerPageCount()-1; // We are creating dummy component to preserve the grid look
 
             ActivityButton {
                 itemIndex: index
-                item: modelData
+                item: index < appActivities.items.length ? appActivities.items[index] : null // Real or dummy
             }
 
             Component.onCompleted: {

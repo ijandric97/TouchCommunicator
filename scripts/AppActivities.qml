@@ -1,6 +1,10 @@
 import QtQuick
+import QtMultimedia
 
-QtObject {
+import "Base64.js" as Base64;
+import "Utils.js" as Utils;
+
+Item {
     property int page: 0;
     property int count: 0;
     property var item: null;
@@ -29,19 +33,18 @@ QtObject {
 
     function traverseDown(index) {
         if (index >= 0 && index < items.length) {
-            // Check if there are children
-            if (storage.getActivityCount(items[index].id) > 0) {
-                // There are children, proceed with loading
-                item = items[index];
-                page = 0;
-                loadActivities();
-            } else {
-                // This is a child, fire its action and return us to the beginning
-                // TODO: Launch the sound
-                item = null;
-                page = 0;
-                loadActivities();
+            let tempItem = items[index];
+
+            // If there is a sound, fire it
+            if (tempItem.sound) {
+                playSound.source = "data:audio/wav;base64," + Base64.btoa(Utils.qByteArrayToString(tempItem.sound));
+                playSound.play();
             }
+
+            // If there are children proceed with loading, otherwise return to the beginning
+            item = storage.getActivityCount(tempItem.id) > 0 ? tempItem : null;
+            page = 0;
+            loadActivities();
         }
     }
 
@@ -51,6 +54,11 @@ QtObject {
             page = 0;
             loadActivities();
         }
+    }
+
+    SoundEffect {
+        id: playSound
+        source: ""
     }
 
     Component.onCompleted: {

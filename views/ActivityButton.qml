@@ -14,13 +14,14 @@ Item {
     property var item
 
     Button {
+        visible: !!item // We are creating dummy component to preserve the grid look
         anchors.fill: parent
-        text: item.title
-        Material.background: Material.color(item.color)
+        text: item ? item.title : ""
+        Material.background: item ? Material.color(item.color) : "transparent"
         Material.foreground: "black"
         display: AbstractButton.TextUnderIcon;
         icon {
-            source: item.icon ? "data:image/png;base64," +  Base64.btoa(Utils.qByteArrayToString(item.icon)) : "";
+            source: item && item.icon ? "data:image/png;base64," +  Base64.btoa(Utils.qByteArrayToString(item.icon)) : "";
             color: "transparent"
         }
 
