@@ -2,7 +2,9 @@ import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
-// TODO: Create a nice looking flat button: )
+import "../scripts/Base64.js" as Base64;
+import "../scripts/Utils.js" as Utils;
+
 Item {
     id: rootActivityButton
     Layout.fillHeight: true
@@ -16,6 +18,12 @@ Item {
         text: item.title
         Material.background: Material.color(item.color)
         Material.foreground: "black"
+        display: AbstractButton.TextUnderIcon;
+        icon {
+            source: item.icon ? "data:image/png;base64," +  Base64.btoa(Utils.qByteArrayToString(item.icon)) : "";
+            color: "transparent"
+        }
+
         onPressed: {
             // We have pressed the button start the timer
             activityButtonTimer.start();
@@ -24,7 +32,6 @@ Item {
             // We have released the button before the timer has finished, reset the timer
             activityButtonTimer.stop();
         }
-
         Timer {
             id:  activityButtonTimer
             interval: appSettings.waitTime

@@ -1,6 +1,6 @@
 import QtQuick
 
-import "utils.js" as Utils
+import "Utils.js" as Utils
 
 QtObject {
     // Constants

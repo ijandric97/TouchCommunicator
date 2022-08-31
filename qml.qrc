@@ -13,7 +13,8 @@
         <file>scripts/AppSettings.qml</file>
         <file>scripts/Storage.qml</file>
         <file>scripts/ViewManager.qml</file>
-        <file>scripts/utils.js</file>
+        <file>scripts/Utils.js</file>
+        <file>scripts/Base64.js</file>
         <!-- Images -->
         <file>images/btn_back.png</file>
         <file>images/btn_save.png</file>
