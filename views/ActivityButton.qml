@@ -15,8 +15,7 @@ Item {
     Button {
         anchors.fill: parent
         text: item.title ? item.title : ""
-        Material.background: item.color ? Material.color(item.color) : "transparent"
-        Material.foreground: "black"
+        Material.background: typeof item.color === "number" ? Material.color(item.color) : undefined
         display: AbstractButton.TextUnderIcon;
         icon {
             source: item.icon ? "data:image/png;base64," +  Base64.btoa(Utils.qByteArrayToString(item.icon)) : "";
