@@ -81,4 +81,19 @@
             <translation>Wait time (ms)</translation>
         </message>
     </context>
+    <context>
+        <name>ActivityActionButton</name>
+        <message>
+            <source>UP</source>
+            <translation>Parent</translation>
+        </message>
+        <message>
+            <source>PREVIOUS</source>
+            <translation>Previous</translation>
+        </message>
+        <message>
+            <source>NEXT</source>
+            <translation>Next</translation>
+        </message>
+    </context>
 </TS>

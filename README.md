@@ -14,7 +14,10 @@ For more info see: https://forum.qt.io/topic/70600/sqlite-activating-foreign-key
 
 NOTE: Material Colors are an array from 0 to 18
 
+TODO: SettingsActivitiesTab should be a copy of communicator but have options for delete, edit upload? (button should be a rectangle with buttons?)
+
 NOTE: Pagination perPage should be calculated as follows:
+
 -   -1 If there is previous page (for button to previous page)
 -   -1 If there is next page (for button to next page)
 -   -1 If not a root page (for button to return to parent)

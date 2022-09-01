@@ -81,4 +81,19 @@
             <translation>Vrijeme čekanja (ms)</translation>
         </message>
     </context>
+    <context>
+        <name>ActivityActionButton</name>
+        <message>
+            <source>UP</source>
+            <translation>Roditelj</translation>
+        </message>
+        <message>
+            <source>PREVIOUS</source>
+            <translation>Prethodni</translation>
+        </message>
+        <message>
+            <source>NEXT</source>
+            <translation>Sljedeći</translation>
+        </message>
+    </context>
 </TS>

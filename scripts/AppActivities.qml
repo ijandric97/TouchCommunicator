@@ -11,24 +11,56 @@ Item {
     property var items: [];
 
     function loadActivities() {
-        const perPage = appSettings.getPerPageCount();
-        count = storage.getActivityCount(item ? item.id : null);
-        items = storage.getActivities(item ? item.id : null, perPage, page * perPage);
+        count = storage.getActivityCount(item ? item.id : null); // getLimitAndOffset() depends on this, must be before
+        const limitOffset = getLimitAndOffset();
+        items = storage.getActivities(item ? item.id : null, limitOffset.limit, limitOffset.offset);
+    }
+
+    function getLimitAndOffset() {
+        let hasUp = false;
+        let hasNext = false;
+        let hasPrevious = false;
+        let offset = 0;
+        let limit = appSettings.getPerPageCount(); // We begin with the perPage count we specified in the settings
+
+        if (item !== null) {
+            limit = limit - 1; // There is a parent, which means up button is also always present
+            hasUp = true;
+        }
+
+        if (page === 0 && limit < count) {
+            limit = limit -1;
+            hasNext = true;
+        } else if (!(page === 0 && limit > count)) {
+            // This means we are not on a first page, and there are more elements than the first page can fit
+            for (let i = 0; i < page; i++) {
+                if (i === 0 && limit < count) {
+                    // Special case
+                    limit = limit - 1; // For the next button
+                    offset = limit; // Go to the next page
+                } else if (offset + limit < count) {
+                    offset = offset + (limit - 1); // We have both next and previous
+                }
+            }
+
+            hasPrevious = true; // We are not on page 0, we always have a previous
+            if (offset + limit < count) {
+                limit = limit - 1; // We are not on a last page so we have both next and previous
+                hasNext = true;
+            }
+        }
+
+        return ({ limit: limit, offset: offset, hasUp: hasUp, hasPrevious: hasPrevious, hasNext: hasNext});
     }
 
     function previousPage() {
-        if (page > 0) {
-            page = page - 1;
-            loadActivities();
-        }
+        page = page - 1;
+        loadActivities();
     }
 
     function nextPage() {
-        const perPage = appSettings.getPerPageCount();
-        if (count - ((page + 1) * perPage) > 0) {
-            page = page + 1;
-            loadActivities();
-        }
+        page = page + 1;
+        loadActivities();
     }
 
     function traverseDown(index) {
@@ -37,8 +69,8 @@ Item {
 
             // If there is a sound, fire it
             if (tempItem.sound) {
-                playSound.source = "data:audio/wav;base64," + Base64.btoa(Utils.qByteArrayToString(tempItem.sound));
-                playSound.play();
+                audioOutput.source = "data:audio/wav;base64," + Base64.btoa(Utils.qByteArrayToString(tempItem.sound));
+                audioOutput.play();
             }
 
             // If there are children proceed with loading, otherwise return to the beginning
@@ -56,12 +88,28 @@ Item {
         }
     }
 
-    SoundEffect {
-        id: playSound
-        source: ""
+    function getActionButtons() {
+        const limitOffset = getLimitAndOffset();
+        const buttons = [];
+
+        if (limitOffset.hasUp) buttons.push({ title: "UP", index: -1 });
+        if (limitOffset.hasPrevious) buttons.push({ title: "PREVIOUS", index: -2 });
+        if (limitOffset.hasNext) buttons.push({ title: "NEXT", index: -3 });
+        
+        return buttons;
     }
 
-    Component.onCompleted: {
-        loadActivities();
+    function getDummyCount() {
+        let ret = 0;
+        if (items.length > 0) {
+            ret = appSettings.getPerPageCount() - items.length - getActionButtons().length;
+        }
+        if (ret < 0) ret = 0;
+        return ret;
+    }
+
+    SoundEffect {
+        id: audioOutput
+        source: ""
     }
 }

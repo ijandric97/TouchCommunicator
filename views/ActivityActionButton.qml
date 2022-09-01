@@ -6,20 +6,17 @@ import "../scripts/Base64.js" as Base64;
 import "../scripts/Utils.js" as Utils;
 
 Item {
-    property int itemIndex // This cannot be index because that appears to be a registered keyword or something
-    property var item
+	property var item
 
     Layout.fillHeight: true
     Layout.fillWidth: true    
 
     Button {
         anchors.fill: parent
-        text: item.title ? item.title : ""
-        Material.background: item.color ? Material.color(item.color) : "transparent"
-        Material.foreground: "black"
+        text: qsTr(item.title);
         display: AbstractButton.TextUnderIcon;
         icon {
-            source: item.icon ? "data:image/png;base64," +  Base64.btoa(Utils.qByteArrayToString(item.icon)) : "";
+            source: "";
             color: "transparent"
         }
 
@@ -38,7 +35,13 @@ Item {
             repeat: false
             onTriggered: {
                 activityButtonTimer.stop();
-                appActivities.traverseDown(itemIndex);
+				if (item.index === -1) {
+                    appActivities.traverseUp();
+                } else if (item.index === -2) {
+                    appActivities.previousPage();
+                } else if (item.index === -3) {
+                    appActivities.nextPage();
+                }
             }
         }
     }

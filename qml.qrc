@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <!-- Views -->
+        <file>views/ActivityActionButton.qml</file>
         <file>views/ActivityButton.qml</file>
         <file>views/Communicator.qml</file>
         <file>views/Selector.qml</file>

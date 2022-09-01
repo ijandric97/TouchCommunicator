@@ -13,13 +13,14 @@ Item {
         columns: appSettings.getColumnCount();
         rows: appSettings.getRowCount();
 
+        // Render main items
         Repeater {
             id: activityRepeater
-            model: appSettings.getPerPageCount()-1; // We are creating dummy component to preserve the grid look
+            model: appActivities.items; // We are creating dummy component to preserve the grid look
 
             ActivityButton {
                 itemIndex: index
-                item: index < appActivities.items.length ? appActivities.items[index] : null // Real or dummy
+                item: modelData
             }
 
             Component.onCompleted: {
@@ -29,5 +30,44 @@ Item {
                 }
             }
         }
+
+        // Action buttons should always be at the top left corner since it is the hardest one to reach probably?
+        Repeater {
+            id: activityActionsRepeater
+            model: appActivities.getActionButtons();
+
+            ActivityActionButton {
+                item: modelData
+            }
+
+            Component.onCompleted: {
+                // Append the elements to the grid instead of repeater
+                while (children.length) {
+                    children[0].parent = activityGrid;
+                }
+            }
+        }
+
+        // Padding Repeater
+        Repeater {
+            id: activityDummyRepeater
+            model: appActivities.getDummyCount()
+
+            Item {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+
+            Component.onCompleted: {
+                // Append the elements to the grid instead of repeater
+                while (children.length) {
+                    children[0].parent = activityGrid;
+                }
+            }
+        }
+    }
+
+    Component.onCompleted: {
+        appActivities.loadActivities();
     }
 }
