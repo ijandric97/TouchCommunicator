@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
-import "../scripts/Base64.js" as Base64;
-import "../scripts/Utils.js" as Utils;
+import "../../libraries/Base64.js" as Base64;
+import "../../libraries/Utils.js" as Utils;
 
 Item {
     property int itemIndex // This cannot be index because that appears to be a registered keyword or something
@@ -24,19 +24,19 @@ Item {
 
         onPressed: {
             // We have pressed the button start the timer
-            activityButtonTimer.start();
+            communicatorButtonTimer.start();
         }
         onReleased: {
             // We have released the button before the timer has finished, reset the timer
-            activityButtonTimer.stop();
+            communicatorButtonTimer.stop();
         }
         Timer {
-            id:  activityButtonTimer
+            id:  communicatorButtonTimer
             interval: appSettings.waitTime
             running: false
             repeat: false
             onTriggered: {
-                activityButtonTimer.stop();
+                communicatorButtonTimer.stop();
                 appActivities.traverseDown(itemIndex);
             }
         }

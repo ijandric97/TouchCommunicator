@@ -4,7 +4,7 @@ import QtQuick.Controls.Material
 
 Item {
     GridLayout {
-        id: activityGrid
+        id: communicator
         anchors.fill: parent
         anchors.margins: 32
         columnSpacing: 32
@@ -15,10 +15,9 @@ Item {
 
         // Render main items
         Repeater {
-            id: activityRepeater
-            model: appActivities.items; // We are creating dummy component to preserve the grid look
+            model: appActivities.items;
 
-            ActivityButton {
+            CommunicatorButton {
                 itemIndex: index
                 item: modelData
             }
@@ -26,31 +25,29 @@ Item {
             Component.onCompleted: {
                 // Append the elements to the grid instead of repeater
                 while (children.length) {
-                    children[0].parent = activityGrid;
+                    children[0].parent = communicator;
                 }
             }
         }
 
         // Action buttons should always be at the top left corner since it is the hardest one to reach probably?
         Repeater {
-            id: activityActionsRepeater
             model: appActivities.getActionButtons();
 
-            ActivityActionButton {
+            ActionButton {
                 item: modelData
             }
 
             Component.onCompleted: {
                 // Append the elements to the grid instead of repeater
                 while (children.length) {
-                    children[0].parent = activityGrid;
+                    children[0].parent = communicator;
                 }
             }
         }
 
-        // Padding Repeater
+        // Padding Repeater - We are creating dummy component to preserve the grid look
         Repeater {
-            id: activityDummyRepeater
             model: appActivities.getDummyCount()
 
             Item {
@@ -61,7 +58,7 @@ Item {
             Component.onCompleted: {
                 // Append the elements to the grid instead of repeater
                 while (children.length) {
-                    children[0].parent = activityGrid;
+                    children[0].parent = communicator;
                 }
             }
         }

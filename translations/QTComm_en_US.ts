@@ -43,7 +43,7 @@
         </message>
     </context>
     <context>
-        <name>SettingsGeneralTab</name>
+        <name>GeneralTab</name>
         <message>
             <source>LANGUAGE</source>
             <translation>Language</translation>
@@ -82,18 +82,56 @@
         </message>
     </context>
     <context>
-        <name>ActivityActionButton</name>
+        <name>Communicator</name>
+        <message>
+            <source>ADD</source>
+            <translation>Add</translation>
+        </message>
+    </context>
+    <context>
+        <name>ActionButton</name>
         <message>
             <source>UP</source>
-            <translation>Parent</translation>
+            <translation>Back</translation>
         </message>
         <message>
             <source>PREVIOUS</source>
-            <translation>Previous</translation>
+            <translation>Previous page</translation>
         </message>
         <message>
             <source>NEXT</source>
-            <translation>Next</translation>
+            <translation>Next page</translation>
+        </message>
+    </context>
+    <context>
+        <name>AddEditForm</name>
+        <message>
+            <source>ADD_ITEM</source>
+            <translation>Adding a new item</translation>
+        </message>
+        <message>
+            <source>EDIT_ITEM</source>
+            <translation>Editing an existing item</translation>
+        </message>
+        <message>
+            <source>SAVE</source>
+            <translation>Save</translation>
+        </message>
+        <message>
+            <source>BACK</source>
+            <translation>Back</translation>
+        </message>
+        <message>
+            <source>TITLE</source>
+            <translation>Title</translation>
+        </message>
+        <message>
+            <source>COLOR</source>
+            <translation>Color</translation>
+        </message>
+        <message>
+            <source>NO_COLOR</source>
+            <translation>No color</translation>
         </message>
     </context>
 </TS>

@@ -2,9 +2,8 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls.Material
 
-import "scripts"
+import "core"
 import "views"
-
 
 Window {
     width: 800

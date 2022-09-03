@@ -1,24 +1,35 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <!-- Libraries -->
+        <file>libraries/Utils.js</file>
+        <file>libraries/Base64.js</file>
+        <!-- Core -->
+        <file>core/AppActivities.qml</file>
+        <file>core/AppSettings.qml</file>
+        <file>core/Storage.qml</file>
+        <file>core/ViewManager.qml</file>
         <!-- Views -->
-        <file>views/ActivityActionButton.qml</file>
-        <file>views/ActivityButton.qml</file>
-        <file>views/Communicator.qml</file>
-        <file>views/Selector.qml</file>
-        <file>views/Settings.qml</file>
-        <file>views/SettingsActivitiesTab.qml</file>
-        <file>views/SettingsGeneralTab.qml</file>
-        <!-- Scripts -->
-        <file>scripts/AppActivities.qml</file>
-        <file>scripts/AppSettings.qml</file>
-        <file>scripts/Storage.qml</file>
-        <file>scripts/ViewManager.qml</file>
-        <file>scripts/Utils.js</file>
-        <file>scripts/Base64.js</file>
+        <file>views/selector/Selector.qml</file>
+
+        <file>views/communicator/Communicator.qml</file>
+        <file>views/communicator/CommunicatorButton.qml</file>
+        <file>views/communicator/ActionButton.qml</file>
+
+        <file>views/settings/Settings.qml</file>
+        <file>views/settings/GeneralTab.qml</file>
+        <file>views/settings/ActivitiesTab.qml</file>
+        <file>views/settings/Communicator.qml</file>
+        <file>views/settings/CommunicatorButton.qml</file>
+        <file>views/settings/ActionButton.qml</file>
+        <file>views/settings/AddEditForm.qml</file>
         <!-- Images -->
+        <file>images/btn_add.png</file>
         <file>images/btn_back.png</file>
+        <file>images/btn_left.png</file>
+        <file>images/btn_right.png</file>
         <file>images/btn_save.png</file>
+        <file>images/btn_check.png</file>
         <file>images/flag_uk.png</file>
         <file>images/flag_cro.png</file>
     </qresource>

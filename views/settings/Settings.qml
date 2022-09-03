@@ -112,8 +112,8 @@ Item {
 
                 currentIndex: settingsTabBar.currentIndex
 
-                SettingsGeneralTab { }
-                SettingsActivitiesTab { }
+                GeneralTab { }
+                ActivitiesTab { }
             }
         }
     }

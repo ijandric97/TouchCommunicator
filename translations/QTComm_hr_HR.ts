@@ -43,7 +43,7 @@
         </message>
     </context>
     <context>
-        <name>SettingsGeneralTab</name>
+        <name>GeneralTab</name>
         <message>
             <source>LANGUAGE</source>
             <translation>Jezik</translation>
@@ -82,18 +82,56 @@
         </message>
     </context>
     <context>
-        <name>ActivityActionButton</name>
+        <name>Communicator</name>
+        <message>
+            <source>ADD</source>
+            <translation>Dodaj</translation>
+        </message>
+    </context>
+    <context>
+        <name>ActionButton</name>
         <message>
             <source>UP</source>
-            <translation>Roditelj</translation>
+            <translation>Nazad</translation>
         </message>
         <message>
             <source>PREVIOUS</source>
-            <translation>Prethodni</translation>
+            <translation>Prethodna stranica</translation>
         </message>
         <message>
             <source>NEXT</source>
-            <translation>Sljedeći</translation>
+            <translation>Sljedeća stranica</translation>
+        </message>
+    </context>
+    <context>
+        <name>AddEditForm</name>
+        <message>
+            <source>ADD_ITEM</source>
+            <translation>Dodavanje nove aktivnosti</translation>
+        </message>
+        <message>
+            <source>EDIT_ITEM</source>
+            <translation>Uređivanje postojeće aktivnosti</translation>
+        </message>
+        <message>
+            <source>SAVE</source>
+            <translation>Spremi</translation>
+        </message>
+        <message>
+            <source>BACK</source>
+            <translation>Nazad</translation>
+        </message>
+        <message>
+            <source>TITLE</source>
+            <translation>Naslov</translation>
+        </message>
+        <message>
+            <source>COLOR</source>
+            <translation>Boja</translation>
+        </message>
+        <message>
+            <source>NO_COLOR</source>
+            <translation>Bez boje</translation>
         </message>
     </context>
 </TS>

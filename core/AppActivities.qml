@@ -1,8 +1,8 @@
 import QtQuick
 import QtMultimedia
 
-import "Base64.js" as Base64;
-import "Utils.js" as Utils;
+import "../libraries/Base64.js" as Base64;
+import "../libraries/Utils.js" as Utils;
 
 Item {
     property int page: 0;
@@ -63,7 +63,7 @@ Item {
         loadActivities();
     }
 
-    function traverseDown(index) {
+    function traverseDown(index, editMode = false) {
         if (index >= 0 && index < items.length) {
             let tempItem = items[index];
 
@@ -74,7 +74,8 @@ Item {
             }
 
             // If there are children proceed with loading, otherwise return to the beginning
-            item = storage.getActivityCount(tempItem.id) > 0 ? tempItem : null;
+            // If editMode, force ourselves into it
+            item = storage.getActivityCount(tempItem.id) > 0 || editMode ? tempItem : null;
             page = 0;
             loadActivities();
         }
@@ -92,9 +93,9 @@ Item {
         const limitOffset = getLimitAndOffset();
         const buttons = [];
 
-        if (limitOffset.hasUp) buttons.push({ title: "UP", index: -1 });
-        if (limitOffset.hasPrevious) buttons.push({ title: "PREVIOUS", index: -2 });
-        if (limitOffset.hasNext) buttons.push({ title: "NEXT", index: -3 });
+        if (limitOffset.hasUp) buttons.push({ title: "UP", index: -1, icon: "qrc:///images/btn_back.png" });
+        if (limitOffset.hasPrevious) buttons.push({ title: "PREVIOUS", index: -2, icon: "qrc:///images/btn_left.png" });
+        if (limitOffset.hasNext) buttons.push({ title: "NEXT", index: -3, icon: "qrc:///images/btn_right.png" });
         
         return buttons;
     }
@@ -112,4 +113,44 @@ Item {
         id: audioOutput
         source: ""
     }
+
+    //#region ADD / EDIT ///////////////////////////////////////////////////////////////////////////////////////////////
+    // We need this for reactivity
+    property var editId: null;
+    property var editParent: null;
+    property string editTitle: "";
+    property var editColor: null;
+    property var editIcon: null;
+    property var editSound: null;
+
+    function hasChildren(item) {
+        if (item) return storage.hasChildren(item.id);
+    }
+
+    function setEditItem(item) {
+        editId = item ? item.id : null;
+        editParent = item ? item.parent : null;
+        editTitle = item ? item.title : "";
+        editColor = item ? item.color : null;
+        editIcon = item ? item.icon : null;
+        editSound = item ? item.sound : null;
+    }
+
+    function deleteEditItem() {
+        if (editId) {
+            storage.deleteActivity(editId);
+            setEditItem(null);
+            loadActivities();
+        }
+    }
+
+    function saveEditItem() {
+        if (editTitle) {
+            const parent = item ? item.id : editParent;
+            storage.setActivity(editTitle, editColor, editIcon, editSound, parent, editId);
+            setEditItem(null);
+            loadActivities();
+        }
+    }
+    //#endregion ADD / EDIT ////////////////////////////////////////////////////////////////////////////////////////////
 }

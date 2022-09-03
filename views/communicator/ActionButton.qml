@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
-import "../scripts/Base64.js" as Base64;
-import "../scripts/Utils.js" as Utils;
+import "../../libraries/Base64.js" as Base64;
+import "../../libraries/Utils.js" as Utils;
 
 Item {
 	property var item
@@ -16,25 +16,25 @@ Item {
         text: qsTr(item.title);
         display: AbstractButton.TextUnderIcon;
         icon {
-            source: "";
+            source: item.icon ? item.icon : "";
             color: "transparent"
         }
 
         onPressed: {
             // We have pressed the button start the timer
-            activityButtonTimer.start();
+            actionButtonTimer.start();
         }
         onReleased: {
             // We have released the button before the timer has finished, reset the timer
-            activityButtonTimer.stop();
+            actionButtonTimer.stop();
         }
         Timer {
-            id:  activityButtonTimer
+            id:  actionButtonTimer
             interval: appSettings.waitTime
             running: false
             repeat: false
             onTriggered: {
-                activityButtonTimer.stop();
+                actionButtonTimer.stop();
 				if (item.index === -1) {
                     appActivities.traverseUp();
                 } else if (item.index === -2) {

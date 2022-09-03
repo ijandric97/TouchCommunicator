@@ -94,15 +94,15 @@ QtObject {
         db.transaction((tx) => tx.executeSql(`DROP TABLE "activities";`));
     }
 
-    function setActivity(title, color, parent = null, id = null) {
+    function setActivity(title, color, icon = null, sound = null, parent = null, id = null) {
         if (!initializedActivities) initializeActivities();
 
         const db = getDatabase();
         let res = "Error";
         db.transaction((tx) => {
             const rs = tx.executeSql(
-                `INSERT OR REPLACE INTO "activities" VALUES (?,?,?,?);`,
-                [id, parent, title, color]
+                `INSERT OR REPLACE INTO "activities" VALUES (?,?,?,?,?,?);`,
+                [id, parent, title, color, icon, sound]
             );
             if (rs.rowsAffected > 0) {
                 res = "OK";
@@ -146,6 +146,31 @@ QtObject {
                 res.push(rs.rows.item(i));
             }
         });
+
+        return res;
+    }
+
+    function hasChildren(id) {
+        const children = getActivities(id);
+        return children.length > 0;
+    }
+
+    function deleteActivity(id) {
+        if (!initializedActivities) initializeActivities();
+        let res = "Error";
+
+        if (!hasChildren(id)) {
+            const db = getDatabase();
+            db.transaction((tx) => {
+                const rs = tx.executeSql(
+                    `DELETE FROM "activities" WHERE id=?;`,
+                    [id]
+                );
+                if (rs.rowsAffected > 0) {
+                    res = "OK";
+                }
+            });
+        }
 
         return res;
     }
