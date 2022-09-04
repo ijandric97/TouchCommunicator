@@ -138,7 +138,6 @@ ColumnLayout {
                         nameFilters: ["Image files (*.jpg *.png)"]
                         onAccepted: appActivities.editIcon = storage.loadFile(iconDialog.selectedFile);
                         onRejected: appActivities.editIcon = null;
-                        Component.onCompleted: visible = false
                     }
                 }
             }
@@ -193,7 +192,6 @@ ColumnLayout {
                         nameFilters: ["Sound files (*.wav)"]
                         onAccepted: appActivities.editSound = storage.loadFile(soundDialog.selectedFile);
                         onRejected: appActivities.editSound = null;
-                        Component.onCompleted: visible = false
                     }
                 }
             }
