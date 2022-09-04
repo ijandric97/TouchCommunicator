@@ -133,5 +133,33 @@
             <source>NO_COLOR</source>
             <translation>Bez boje</translation>
         </message>
+        <message>
+            <source>ICON</source>
+            <translation>Ikona</translation>
+        </message>
+        <message>
+            <source>NO_ICON</source>
+            <translation>Bez ikone</translation>
+        </message>
+        <message>
+            <source>SELECT_ICON</source>
+            <translation>Odaberi ikonu</translation>
+        </message>
+        <message>
+            <source>SOUND</source>
+            <translation>Zvuk</translation>
+        </message>
+        <message>
+            <source>NO_SOUND</source>
+            <translation>Bez zvuka</translation>
+        </message>
+        <message>
+            <source>SELECT_SOUND</source>
+            <translation>Odaberi zvuk</translation>
+        </message>
+        <message>
+            <source>PLAY_SOUND</source>
+            <translation>Pokreni zvuk</translation>
+        </message>
     </context>
 </TS>

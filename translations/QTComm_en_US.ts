@@ -133,5 +133,33 @@
             <source>NO_COLOR</source>
             <translation>No color</translation>
         </message>
+        <message>
+            <source>ICON</source>
+            <translation>Icon</translation>
+        </message>
+        <message>
+            <source>NO_ICON</source>
+            <translation>No icon</translation>
+        </message>
+        <message>
+            <source>SELECT_ICON</source>
+            <translation>Select Icon</translation>
+        </message>
+        <message>
+            <source>SOUND</source>
+            <translation>Sound</translation>
+        </message>
+        <message>
+            <source>NO_SOUND</source>
+            <translation>No sound</translation>
+        </message>
+        <message>
+            <source>SELECT_SOUND</source>
+            <translation>Select sound</translation>
+        </message>
+        <message>
+            <source>PLAY_SOUND</source>
+            <translation>Play sound</translation>
+        </message>
     </context>
 </TS>

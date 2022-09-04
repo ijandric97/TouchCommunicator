@@ -1,6 +1,10 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Material
+import QtQuick.Dialogs
+
+import "../../libraries/Base64.js" as Base64;
+import "../../libraries/Utils.js" as Utils;
 
 ColumnLayout {
     Layout.fillWidth: true
@@ -27,6 +31,7 @@ ColumnLayout {
 
                 Label {
                     text: qsTr("TITLE")
+                    font.underline: true
                 }
                 TextField {
                     Layout.fillWidth: true
@@ -43,6 +48,7 @@ ColumnLayout {
 
                 Label {
                     text: qsTr("COLOR")
+                    font.underline: true
                 }
                 GridLayout {
                     columns: 10
@@ -83,12 +89,118 @@ ColumnLayout {
                             }
                         }
                     }
+                }
+            }
 
+            // Icon
+            ColumnLayout {
+                Layout.fillWidth: true
+
+                Label {
+                    text: qsTr("ICON")
+                    font.underline: true
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    Image {
+                        Layout.margins: 8
+                        visible: appActivities.editIcon
+                        source: appActivities.editIcon ? "data:image/png;base64," + 
+                            Base64.btoa(Utils.qByteArrayToString(appActivities.editIcon)) : "";                       
+                    }
+                
+                    Button {
+                        visible: !appActivities.editIcon
+                        text: qsTr("SELECT_ICON");
+                        display: AbstractButton.TextBesideIcon
+                        icon {
+                            source: "qrc:///images/btn_add.png";
+                            color: "transparent"
+                        }
+                        onClicked: iconDialog.visible = true
+                    }
+                    Button {
+                        visible: appActivities.editIcon
+                        text: qsTr("NO_ICON");
+                        display: AbstractButton.TextBesideIcon
+                        icon {
+                            source: "qrc:///images/btn_delete.png";
+                            color: "transparent"
+                        }
+                        onClicked: appActivities.editIcon = null;
+                    }
+
+                    FileDialog {
+                        id: iconDialog
+                        title: qsTr("SELECT_ICON")
+                        nameFilters: ["Image files (*.jpg *.png)"]
+                        onAccepted: appActivities.editIcon = storage.loadFile(iconDialog.selectedFile);
+                        onRejected: appActivities.editIcon = null;
+                        Component.onCompleted: visible = false
+                    }
+                }
+            }
+
+            // Sound
+            ColumnLayout {
+                Layout.fillWidth: true
+
+                Label {
+                    text: qsTr("SOUND")
+                    font.underline: true
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    Button {
+                        visible: appActivities.editSound
+                        Layout.rightMargin: 8
+                        display: AbstractButton.TextBesideIcon
+                        text: qsTr("PLAY_SOUND");
+                        icon {
+                            source: "qrc:///images/btn_play.png";
+                            color: "transparent"
+                        }          
+                        onClicked: appActivities.playEditSound();          
+                    }
+                    Button {
+                        visible: !appActivities.editSound
+                        text: qsTr("SELECT_SOUND");
+                        display: AbstractButton.TextBesideIcon
+                        icon {
+                            source: "qrc:///images/btn_add.png";
+                            color: "transparent"
+                        }
+                        onClicked: soundDialog.visible = true
+                    }
+                    Button {
+                        visible: appActivities.editSound
+                        text: qsTr("NO_SOUND");
+                        display: AbstractButton.TextBesideIcon
+                        icon {
+                            source: "qrc:///images/btn_delete.png";
+                            color: "transparent"
+                        }
+                        onClicked: appActivities.editSound = null;
+                    }
+
+                    FileDialog {
+                        id: soundDialog
+                        title: qsTr("SELECT_SOUND")
+                        nameFilters: ["Sound files (*.wav)"]
+                        onAccepted: appActivities.editSound = storage.loadFile(soundDialog.selectedFile);
+                        onRejected: appActivities.editSound = null;
+                        Component.onCompleted: visible = false
+                    }
                 }
             }
         }
     }
 
+    // Back and Save buttons
     RowLayout {
         Layout.fillWidth: true
 

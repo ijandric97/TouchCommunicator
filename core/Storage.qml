@@ -1,6 +1,9 @@
 import QtQuick
 import QtQuick.LocalStorage
 
+import "../libraries/Base64.js" as Base64;
+import "../libraries/Utils.js" as Utils;
+
 QtObject {
     readonly property string dbMajorVersion: "1"
     readonly property string dbMinorVersion: "1.0"    
@@ -192,4 +195,15 @@ QtObject {
         return res;
     }
     //#endregion ACTIVITIES ////////////////////////////////////////////////////////////////////////////////////////////
+
+    //#region FILES ////////////////////////////////////////////////////////////////////////////////////////////////////
+    function loadFile(url) {
+        try {
+            return fileIO.read(url);
+        } catch (err) {
+            console.log("Error:", err);
+            return null;
+        }
+    }
+    //#endregion FILES /////////////////////////////////////////////////////////////////////////////////////////////////
 }

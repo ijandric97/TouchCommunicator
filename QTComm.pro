@@ -3,10 +3,12 @@ QT += quick
 CONFIG += c++11
 
 SOURCES += \
+        fileio.cpp \
         main.cpp \
         qmltranslator.cpp
 
 HEADERS += \
+    fileio.h \
     qmltranslator.h
 
 RESOURCES += qml.qrc

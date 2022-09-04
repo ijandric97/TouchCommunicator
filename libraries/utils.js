@@ -7,6 +7,11 @@ function prettyStringify(obj) {
     return JSON.stringify(obj, replacer, 2);
 }
 
+/**
+ * Convert JS ByteArray to a UTF-16 string
+ * @param {Uint8Array} qByteArray JS Byte array
+ * @returns {string} UTF-16 string representing the data
+ */
 function qByteArrayToString(qByteArray) {
     let response = new Uint8Array(qByteArray);
     let raw = "";

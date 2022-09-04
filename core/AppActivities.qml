@@ -152,5 +152,12 @@ Item {
             loadActivities();
         }
     }
+
+    function playEditSound() {
+        if (editSound) {
+            audioOutput.source = "data:audio/wav;base64," + Base64.btoa(Utils.qByteArrayToString(editSound));
+            audioOutput.play();
+        }
+    }
     //#endregion ADD / EDIT ////////////////////////////////////////////////////////////////////////////////////////////
 }
