@@ -172,5 +172,9 @@
             <source>PLAY_SOUND</source>
             <translation>Play sound</translation>
         </message>
+        <message>
+            <source>RECORD_SOUND</source>
+            <translation>Record sound</translation>
+        </message>
     </context>
 </TS>

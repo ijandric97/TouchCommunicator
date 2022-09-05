@@ -16,8 +16,14 @@ Item {
         text: qsTr(item.title);
         display: AbstractButton.TextUnderIcon;
         icon {
+            width: parent.height - 80
+            height: parent.height - 80
             source: item.icon ? item.icon : "";
             color: "transparent"
+        }
+        font {
+            pixelSize: 20
+            bold: true
         }
         onClicked: {
             if (item.index === -1) {

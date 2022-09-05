@@ -179,6 +179,16 @@ ColumnLayout {
                         }
                         onClicked: soundDialog.visible = true
                     }
+                    /* Button {
+                        visible: !appActivities.editSound
+                        text: qsTr("RECORD_SOUND");
+                        display: AbstractButton.TextBesideIcon
+                        icon {
+                            source: "qrc:///images/btn_record.png";
+                            color: "transparent"
+                        }
+                        onClicked: soundDialog.visible = true
+                    } */
                     Button {
                         visible: appActivities.editSound
                         text: qsTr("NO_SOUND");

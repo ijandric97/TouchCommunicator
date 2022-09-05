@@ -159,5 +159,33 @@ Item {
             audioOutput.play();
         }
     }
+
+    AudioInput {
+        id: audioInput
+        volume: 100
+    }
+
+    MediaRecorder {
+        id: mediaRecorder
+        onRecorderStateChanged:
+            (state) => {
+                if (state === MediaRecorder.StoppedState) {
+                    root.contentOrientation = Qt.PrimaryOrientation
+                    mediaList.append()
+                } else if (state === MediaRecorder.RecordingState && captureSession.camera) {
+                    // lock orientation while recording and create a preview image
+                    root.contentOrientation = root.screen.orientation;
+                    videoOutput.grabToImage(function(res) { mediaList.mediaThumbnail = res.url })
+                }
+            }
+        onActualLocationChanged: (url) => { mediaList.mediaUrl = url }
+        onErrorOccurred: console.log("Recorder error", recorder.errorString);
+    }
+
+    CaptureSession {
+        id: audioCapture
+        audioInput: audioInput
+        recorder: mediaRecorder
+    }
     //#endregion ADD / EDIT ////////////////////////////////////////////////////////////////////////////////////////////
 }

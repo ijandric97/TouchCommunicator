@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QDebug>
 
 #include "qmltranslator.h"
 #include "fileio.h"
@@ -19,6 +20,9 @@ int main(int argc, char *argv[])
     // NOTE: Has to be done before engine has loaded!!!
     engine.rootContext()->setContextProperty("qmlTranslator", &qmlTranslator);
     engine.rootContext()->setContextProperty("fileIO", &fileIO);
+
+    // NOTE: Show us where the DB is
+    qDebug() << engine.offlineStoragePath();
 
     // Load the main.qml file
     const QUrl url(QStringLiteral("qrc:/main.qml"));

@@ -172,5 +172,9 @@
             <source>PLAY_SOUND</source>
             <translation>Pokreni zvuk</translation>
         </message>
+        <message>
+            <source>RECORD_SOUND</source>
+            <translation>Snimi zvuk</translation>
+        </message>
     </context>
 </TS>
