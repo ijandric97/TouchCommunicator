@@ -89,6 +89,17 @@
         </message>
     </context>
     <context>
+        <name>CommunicatorButton</name>
+        <message>
+            <source>EDIT</source>
+            <translation>Edit</translation>
+        </message>
+        <message>
+            <source>DELETE</source>
+            <translation>Delete</translation>
+        </message>
+    </context>
+    <context>
         <name>ActionButton</name>
         <message>
             <source>UP</source>

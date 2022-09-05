@@ -18,8 +18,14 @@ Item {
         Material.background: typeof item.color === "number" ? Material.color(item.color) : undefined
         display: AbstractButton.TextUnderIcon;
         icon {
+            width: parent.height - 80
+            height: parent.height - 80
             source: item.icon ? "data:image/png;base64," +  Base64.btoa(Utils.qByteArrayToString(item.icon)) : "";
             color: "transparent"
+        }
+        font {
+            pixelSize: 20
+            bold: true
         }
 
         onPressed: {

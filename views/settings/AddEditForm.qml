@@ -106,6 +106,10 @@ ColumnLayout {
 
                     Image {
                         Layout.margins: 8
+                        sourceSize {
+                            width: 128
+                            height: 128
+                        }
                         visible: appActivities.editIcon
                         source: appActivities.editIcon ? "data:image/png;base64," + 
                             Base64.btoa(Utils.qByteArrayToString(appActivities.editIcon)) : "";                       
