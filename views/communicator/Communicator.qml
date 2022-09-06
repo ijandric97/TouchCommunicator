@@ -3,9 +3,9 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 
 Item {
-    Button {
-        width: 15
-        height: 15
+    MouseArea {
+        width: 25
+        height: 35
         onPressed: communicatorBackTimer.start();
         onReleased: communicatorBackTimer.stop();
         Timer {
@@ -18,7 +18,7 @@ Item {
                 viewManager.switchToSelector()
             }
         }
-}
+    }
 
     GridLayout {
         id: communicator
