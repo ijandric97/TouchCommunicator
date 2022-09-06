@@ -18,6 +18,10 @@
             <source>COMMUNICATOR</source>
             <translation>Communicator</translation>
         </message>
+        <message>
+            <source>EXIT</source>
+            <translation>Exit</translation>
+        </message>
     </context>
     <context>
         <name>Settings</name>

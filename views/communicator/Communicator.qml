@@ -3,6 +3,23 @@ import QtQuick.Layouts
 import QtQuick.Controls.Material
 
 Item {
+    Button {
+        width: 15
+        height: 15
+        onPressed: communicatorBackTimer.start();
+        onReleased: communicatorBackTimer.stop();
+        Timer {
+            id: communicatorBackTimer
+            interval: appSettings.waitTime
+            running: false
+            repeat: false
+            onTriggered: {
+                communicatorBackTimer.stop();
+                viewManager.switchToSelector()
+            }
+        }
+}
+
     GridLayout {
         id: communicator
         anchors.fill: parent

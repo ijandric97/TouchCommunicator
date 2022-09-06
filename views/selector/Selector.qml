@@ -14,8 +14,32 @@ Item {
 
             Button {
                 anchors.fill: parent
+                text: qsTr("COMMUNICATOR");
+                display: AbstractButton.TextUnderIcon
+                Material.background: Material.Indigo
+                icon {
+                    width: parent.width - 120
+                    height: parent.width - 120
+                    source: "qrc:///images/btn_communicator.png";
+                    color: "transparent"
+                }
+                font {
+                    pixelSize: 20
+                    bold: true
+                }
+                onClicked: viewManager.switchToCommunicator()
+            }
+        }
+
+        Item {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
+            Button {
+                anchors.fill: parent
                 text: qsTr("SETTINGS");
                 display: AbstractButton.TextUnderIcon
+                Material.background: Material.Green
                 icon {
                     width: parent.width - 120
                     height: parent.width - 120
@@ -36,20 +60,20 @@ Item {
 
             Button {
                 anchors.fill: parent
-                text: qsTr("COMMUNICATOR");
+                text: qsTr("EXIT");
                 display: AbstractButton.TextUnderIcon
                 Material.background: Material.Red
                 icon {
                     width: parent.width - 120
                     height: parent.width - 120
-                    source: "qrc:///images/btn_communicator.png";
+                    source: "qrc:///images/btn_exit.png";
                     color: "transparent"
                 }
                 font {
                     pixelSize: 20
                     bold: true
                 }
-                onClicked: viewManager.switchToCommunicator()
+                onClicked: Qt.quit()
             }
         }
     }

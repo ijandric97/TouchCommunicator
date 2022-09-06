@@ -35,6 +35,7 @@
         <file>images/btn_play.png</file>
         <file>images/btn_communicator.png</file>
         <file>images/btn_settings.png</file>
+        <file>images/btn_exit.png</file>
         <file>images/flag_uk.png</file>
         <file>images/flag_cro.png</file>
     </qresource>
