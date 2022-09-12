@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QDebug>
+#include <QIcon>
 
 #include "qmltranslator.h"
 #include "fileio.h"
@@ -23,6 +24,9 @@ int main(int argc, char *argv[])
 
     // NOTE: Show us where the DB is
     qDebug() << engine.offlineStoragePath();
+
+    // Set the icon file
+    app.setWindowIcon(QIcon(":/images/icon.ico"));
 
     // Load the main.qml file
     const QUrl url(QStringLiteral("qrc:/main.qml"));

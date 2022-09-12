@@ -31,7 +31,7 @@ Item {
         if (page === 0 && limit < count) {
             limit = limit -1;
             hasNext = true;
-        } else if (!(page === 0 && limit > count)) {
+        } else if (!(page === 0 && limit >= count)) {
             // This means we are not on a first page, and there are more elements than the first page can fit
             for (let i = 0; i < page; i++) {
                 if (i === 0 && limit < count) {
@@ -73,11 +73,13 @@ Item {
                 audioOutput.play();
             }
 
-            // If there are children proceed with loading, otherwise return to the beginning
+            // If there are children proceed with loading, otherwise do nothing
             // If editMode, force ourselves into it
-            item = storage.getActivityCount(tempItem.id) > 0 || editMode ? tempItem : null;
-            page = 0;
-            loadActivities();
+            if (storage.getActivityCount(tempItem.id) > 0 || editMode ) {
+                item = tempItem;
+                page = 0;
+                loadActivities();
+            }
         }
     }
 

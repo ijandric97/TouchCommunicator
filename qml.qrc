@@ -38,5 +38,6 @@
         <file>images/btn_exit.png</file>
         <file>images/flag_uk.png</file>
         <file>images/flag_cro.png</file>
+        <file>images/icon.ico</file>
     </qresource>
 </RCC>

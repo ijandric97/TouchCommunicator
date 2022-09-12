@@ -4,15 +4,15 @@ import "../libraries/Utils.js" as Utils
 
 QtObject {
     // Constants
-    readonly property var sizes: [3, 4, 5];
+    readonly property var sizes: [2, 3, 4, 5];
     readonly property int minWaitTime: 0;
     readonly property int maxWaitTime: 10000;
     readonly property var languages: ["hr_HR", "en_US"];
 
     // Properties
     property bool isDarkMode: false;
-    property int rowSizeIndex: 1;
-    property int columnSizeIndex: 1;
+    property int rowSizeIndex: 0;
+    property int columnSizeIndex: 2;
     property int waitTime: 2000;
     property string language: "hr_HR";
 
