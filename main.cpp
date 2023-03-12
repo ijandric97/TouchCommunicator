@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include <QDebug>
 #include <QIcon>
+#include <QStandardPaths>
 
 #include "qmltranslator.h"
 #include "fileio.h"
@@ -11,7 +12,6 @@
 int main(int argc, char *argv[])
 {
     // Prepare the application
-    //qputenv("QML_XHR_ALLOW_FILE_READ", QByteArray("1"));
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     QmlTranslator qmlTranslator(&engine);
@@ -23,6 +23,9 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("fileIO", &fileIO);
 
     // NOTE: Show us where the DB is
+    // NOTE: Show us where the DB is
+    QString storagePath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/QTAsistivna";
+    engine.setOfflineStoragePath(storagePath);
     qDebug() << engine.offlineStoragePath();
 
     // Set the icon file
